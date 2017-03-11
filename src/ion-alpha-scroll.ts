@@ -52,16 +52,16 @@ export class IonAlphaScroll {
 
       <ion-scroll class="ion-alpha-scroll" [ngStyle]="ionAlphaScrollRef.calculateScrollDimensions()" scrollX="false" scrollY="true">
         <ion-item-group class="ion-alpha-list-outer">
-          <div *ngFor="let items of ionAlphaScrollRef.sortedItems | mapToIterable; trackBy:ionAlphaScrollRef.trackBySortedItems">
+          <div collection-repeat="items in ionAlphaScrollRef.sortedItems | mapToIterable; trackBy:ionAlphaScrollRef.trackBySortedItems">
             <ion-item-divider id="scroll-letter-{{items.key}}">{{items.key}}</ion-item-divider>
-            <div *ngFor="let item of items.value">
+            <div collection-repeat="item in items.value">
               ${this.itemTemplate}
             </div>
           </div>
         </ion-item-group>
       </ion-scroll>
       <ul class="ion-alpha-sidebar" [ngStyle]="ionAlphaScrollRef.calculateDimensionsForSidebar()">
-        <li *ngFor="let letter of ionAlphaScrollRef.alphabet" tappable (click)="ionAlphaScrollRef.alphaScrollGoToList(letter)">
+        <li collection-repeat="letter in ionAlphaScrollRef.alphabet" tappable (click)="ionAlphaScrollRef.alphaScrollGoToList(letter)">
         <a>{{letter}}</a>
         </li>
       </ul>
